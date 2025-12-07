@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#22C55E" rx="100"/>
+  <path fill="#ffffff" d="M256 100c-86 0-156 70-156 156s70 156 156 156 156-70 156-156-70-156-156-156zm0 280c-68.5 0-124-55.5-124-124s55.5-124 124-124 124 55.5 124 124-55.5 124-124 124z"/>
+  <path fill="#ffffff" d="M256 180c-42 0-76 34-76 76s34 76 76 76 76-34 76-76-34-76-76-76zm0 120c-24.3 0-44-19.7-44-44s19.7-44 44-44 44 19.7 44 44-19.7 44-44 44z"/>
+  <circle fill="#22C55E" cx="256" cy="256" r="32"/>
+  <text x="256" y="420" font-family="Arial" font-size="48" fill="#ffffff" text-anchor="middle" font-weight="bold">럭키백</text>
+</svg>

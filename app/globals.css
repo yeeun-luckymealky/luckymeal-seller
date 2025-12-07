@@ -1,26 +1,319 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 토스 스타일 컬러 팔레트 */
+  --background: #F4F4F4;
+  --surface: #FFFFFF;
+  --foreground: #191F28;
+  --foreground-secondary: #6B7684;
+  --foreground-tertiary: #B0B8C1;
+
+  /* 브랜드 컬러 */
+  --primary: #3182F6;
+  --primary-light: #EBF4FF;
+  --success: #00C853;
+  --success-light: #E8F9EF;
+  --warning: #FF9500;
+  --warning-light: #FFF5E6;
+  --danger: #F04452;
+  --danger-light: #FFEBEE;
+
+  /* 그라데이션 */
+  --gradient-primary: linear-gradient(135deg, #3182F6 0%, #6366F1 100%);
+  --gradient-success: linear-gradient(135deg, #00C853 0%, #00E676 100%);
+
+  /* 그림자 - 토스 스타일 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* 둥근 모서리 */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* 애니메이션 타이밍 */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-sans-kr);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans-kr), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.02em;
+}
+
+/* 토스 스타일 타이포그래피 */
+.toss-title-1 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.toss-title-2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+}
+
+.toss-title-3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.toss-body-1 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.toss-body-2 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.toss-caption {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--foreground-secondary);
+}
+
+/* 큰 숫자 스타일 (토스 특징) */
+.toss-amount {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.toss-amount-lg {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Safe area padding for iOS */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* 토스 스타일 애니메이션 */
+@keyframes toss-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toss-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes toss-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes toss-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes toss-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes toss-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes toss-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-toss-slide-up {
+  animation: toss-slide-up 0.4s var(--ease-out-expo);
+}
+
+.animate-toss-fade-in {
+  animation: toss-fade-in 0.3s ease-out;
+}
+
+.animate-toss-scale-in {
+  animation: toss-scale-in 0.3s var(--ease-out-back);
+}
+
+.animate-toss-bounce {
+  animation: toss-bounce 0.2s ease-in-out;
+}
+
+.animate-toss-pulse {
+  animation: toss-pulse 2s ease-in-out infinite;
+}
+
+/* 스켈레톤 로딩 */
+.skeleton {
+  background: linear-gradient(90deg, #E5E8EB 25%, #F2F4F6 50%, #E5E8EB 75%);
+  background-size: 200% 100%;
+  animation: toss-shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* 토스 스타일 버튼 호버/클릭 효과 */
+.toss-pressable {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+}
+
+.toss-pressable:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* 토스 스타일 카드 */
+.toss-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.toss-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.toss-card-elevated {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* 그라데이션 텍스트 */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 스크롤바 숨김 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 토스 스타일 디바이더 */
+.toss-divider {
+  height: 8px;
+  background: var(--background);
+  margin: 0 -20px;
+}
+
+/* 토스 리스트 아이템 */
+.toss-list-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #F2F4F6;
+}
+
+.toss-list-item:last-child {
+  border-bottom: none;
+}
+
+/* 숫자 강조 스타일 */
+.toss-number-highlight {
+  color: var(--primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 상태 인디케이터 */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot-success {
+  background: var(--success);
+  box-shadow: 0 0 0 3px var(--success-light);
+}
+
+.status-dot-warning {
+  background: var(--warning);
+  box-shadow: 0 0 0 3px var(--warning-light);
+}
+
+.status-dot-danger {
+  background: var(--danger);
+  box-shadow: 0 0 0 3px var(--danger-light);
 }
